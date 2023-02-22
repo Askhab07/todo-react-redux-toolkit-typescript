@@ -1,0 +1,28 @@
+.form {
+    display: flex;
+    margin-top: -27px;
+    .form__input {
+        margin-right: 8px;
+        width: 603px;
+        height: 54px;
+        background: #262626;
+        border: 1px solid #0d0d0d;
+        border-radius: 8px;
+        color: #808080;
+        padding: 16px;
+    }
+    button {
+        width: 125px;
+        height: 52px;
+        background: #1e6f9f;
+        border-radius: 8px;
+        border: 0;
+
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 140%;
+        color: #f2f2f2;
+    }
+}
