@@ -6,7 +6,7 @@ import { ITodos } from "../../types/ITodos";
 export const getTodos = createAsyncThunk(
   "todos/getTodos", 
   async function () {
-  const res = await fetch("https://unicode-todo.onrender.com/todos");
+  const res = await fetch("https://jsonplaceholder.typicode.com/users/1/todos");
   return await res.json();
 });
 
@@ -29,7 +29,7 @@ export const addTodo = createAsyncThunk(
 export const toggleTodo = createAsyncThunk(
   "todos/update",
   async function (todo: ITodos) {
-    const res = await fetch(`${baseUrl}/todos/${todo._id}`, {
+    const res = await fetch(`${baseUrl}/todos/${todo.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -44,15 +44,15 @@ export const toggleTodo = createAsyncThunk(
 // Удаление
 export const deleteTodo = createAsyncThunk(
   "todos/delete",
-  async function (_id: string) {
-    const res = await fetch(`${baseUrl}/todos/${_id}`, {
+  async function (id: string) {
+    const res = await fetch(`${baseUrl}/todos/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({_id})
+      body: JSON.stringify({id})
     });
 
-    return _id
+    return id
   }
 )

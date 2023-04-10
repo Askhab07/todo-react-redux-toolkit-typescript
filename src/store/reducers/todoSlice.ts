@@ -40,7 +40,7 @@ export const todoSlice = createSlice({
       (state, action: PayloadAction<ITodos>) => {
         state.isLoading = false;
         state.todos = state.todos.map((todo) => {
-          if (todo._id === action.payload._id) {
+          if (todo.id === action.payload.id) {
             return action.payload;
           }
           return todo;
@@ -54,7 +54,7 @@ export const todoSlice = createSlice({
       deleteTodo.fulfilled,
       (state, action: PayloadAction<string>) => {
         state.isLoading = false;
-        state.todos = state.todos.filter(todo => todo._id !== action.payload);
+        state.todos = state.todos.filter(todo => todo.id !== action.payload);
       }
     );
   },

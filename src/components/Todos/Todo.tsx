@@ -4,11 +4,11 @@ import { ITodos } from "../../types/ITodos";
 
 import "./todo.scss";
 
-const Todo: React.FC<ITodos> = ({ _id, title, completed, created_at }) => {
+const Todo: React.FC<ITodos> = ({ id, title, completed, created_at }) => {
   const dispatch = useAppDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteTodo(_id));
+    dispatch(deleteTodo(id));
   };
 
   return (
@@ -18,13 +18,20 @@ const Todo: React.FC<ITodos> = ({ _id, title, completed, created_at }) => {
         type="checkbox"
         checked={completed}
         onChange={() =>
-          dispatch(toggleTodo({ _id, title, completed, created_at }))
+          dispatch(toggleTodo({ id, title, completed, created_at }))
         }
       />
       <p>{title}</p>
-      <span className="delete" onClick={handleDelete}>
-        &#10005;
-      </span>
+      <button type="button" className="btn__loading">
+        <span className="delete" onClick={handleDelete}>
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </span>
+      </button>
     </div>
   );
 };
